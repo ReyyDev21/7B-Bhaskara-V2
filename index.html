@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Kelas - Bhaskara 7B</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Sawarabi Mincho', serif;
+        background-color: #ffe4ec;
+        color: #5c2a3e;
+    }
+
+    header {
+        background: linear-gradient(90deg, #ffb6c1, #ff9bb2);
+        text-align: center;
+        padding: 20px;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 15px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+        border-left: 5px solid #ff9bb2;
+        padding-left: 10px;
+        margin: 10px 0;
+        color: #c2185b;
+    }
+
+    #searchInput {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ffb6c1;
+        min-width: 200px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table, th, td {
+        border: 1px solid #ffb6c1;
+    }
+
+    th {
+        background-color: #ffccd5;
+        padding: 10px;
+        text-align: left;
+    }
+
+    td {
+        padding: 10px;
+        background-color: #fff6f8;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #8e4b63;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: radial-gradient(circle, rgba(255,182,193,0.2) 20%, transparent 20%),
+                          radial-gradient(circle, rgba(255,182,193,0.2) 20%, transparent 20%);
+        background-size: 50px 50px;
+        z-index: -1;
+    }
+
+    .pagination {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .pagination button {
+        padding: 8px 16px;
+        margin: 5px;
+        background-color: #ff9bb2;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .pagination button:disabled {
+        background-color: #ffd6e0;
+        cursor: not-allowed;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📚 Data Kelas 7B</h1>
+    <p>28 Murid & 1 Guru</p>
+</header>
+
+<div class="container">
+    <h2>Data Guru</h2>
+    <table>
+        <tr>
+            <th>Nama Guru</th>
+            <td>Ibu Anisah Husnul</td>
+        </tr>
+        <tr>
+            <th>Mata Pelajaran</th>
+            <td>Wali kelas</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td> - </td>
+        </tr>
+    </table>
+
+    <div class="section-header">
+        <h2>Data Murid</h2>
+        <input type="text" id="searchInput" placeholder="Cari nama murid...">
+    </div>
+    <table id="muridTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Murid</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody id="muridBody"></tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prevBtn">Prev</button>
+        <button id="nextBtn">Next</button>
+    </div>
+
+    <h2>Informasi Kelas</h2>
+    <table>
+        <tr>
+            <th>Nama Kelas</th>
+            <td>Kelas 7B Bhaskara</td>
+        </tr>
+        <tr>
+            <th>Tahun Ajaran</th>
+            <td>2025 - 2026</td>
+        </tr>
+        <tr>
+            <th>Lokasi</th>
+            <td>SMP Prima Cendekia Islami</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    ©️ 2025 Kelas 7B Bhaskara
+</footer>
+
+<script>
+const murid = [
+    {no:1, nama:"Rafi.MA", ket:"Ketua Kelas"},
+    {no:2, nama:"Azwa", ket:"Wakil Ketua"},
+    {no:3, nama:"Adhsty Marischa Syafiq", ket:"Kesehatan"},
+    {no:4, nama:"Albian Anggatama", ket:"Olahraga"},
+    {no:5, nama:"Audrey Lizzy Sachio", ket:"Bendahara"},
+    {no:6, nama:"Bintang Akila Gunatama", ket:"Pendidikan"},
+    {no:7, nama:"Dean Purna Tri Putra", ket:"Content Creator"},
+    {no:8, nama:"Fairel Danendra Argani", ket:"Content Creator"},
+    {no:9, nama:"Fara Abhivandya rafiqul A'laa", ket:"Sekretaris"},
+    {no:10, nama:"Gana Wibawa Bhakti", ket:"Olahraga"},
+    {no:11, nama:"Iqfharina Annue Maudhiyansyah", ket:"Keamanan"},
+    {no:12, nama:"M Daffi Adlan", ket:"Content Creator"},
+    {no:13, nama:"Mario Faeyza Gunawan", ket:"Pendidikan"},
+    {no:14, nama:"Muhamad Arshyl Amazzidan", ket:"Olahraga"},
+    {no:15, nama:"Muhammad Galang Prawira", ket:"Sekretaris"},
+    {no:16, nama:"Muhammad Kelza Alif Yusuf", ket:"Kewarganegaraan"},
+    {no:17, nama:"Muhammad Rafi Al Karim", ket:"Kewarganegaraan"},
+    {no:18, nama:"Nadzifa Zahra Safiyya", ket:"Kebersihan"},
+    {no:19, nama:"Natasya Kiraina", ket:"Keagamaan"},
+    {no:20, nama:"Naufal Ilham Saputra", ket:"Keamanan"},
+    {no:21, nama:"Prita Audia Parameswari", ket:"Keamanan"},
+    {no:22, nama:"Revalho Muhamad Tanjung", ket:"Keamanan"},
+    {no:23, nama:"Sahla Saida Aprilia", ket:"Content Creator"},
+    {no:24, nama:"Shazfa Azkayra Faiza Adilla", ket:"Bendahara"},
+    {no:25, nama:"Syafira Calista Rafania", ket:"Kebersihan"},
+    {no:26, nama:"Syakira Adzkiya Sidieqi", ket:"Kebersihan"},
+    {no:27, nama:"Zakia Hasna Riskililah", ket:"Content Creator"},
+    {no:28, nama:"Ziavarsha Putri Aiyla Gani", ket:"Kesehatan"},
+];
+
+let currentPage = 1;
+const rowsPerPage = 10;
+let filteredData = [...murid];
+
+function displayTable(page) {
+    const tbody = document.getElementById("muridBody");
+    tbody.innerHTML = "";
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const paginatedItems = filteredData.slice(start, end);
+
+    paginatedItems.forEach(m => {
+        const tr = `<tr>
+            <td>${m.no}</td>
+            <td>${m.nama}</td>
+            <td>${m.ket}</td>
+        </tr>`;
+        tbody.innerHTML += tr;
+    });
+
+    document.getElementById("prevBtn").disabled = page === 1;
+    document.getElementById("nextBtn").disabled = end >= filteredData.length;
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+    if (currentPage * rowsPerPage < filteredData.length) {
+        currentPage++;
+        displayTable(currentPage);
+    }
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        displayTable(currentPage);
+    }
+});
+
+document.getElementById("searchInput").addEventListener("input", (e) => {
+    const keyword = e.target.value.toLowerCase();
+    filteredData = murid.filter(m => m.nama.toLowerCase().includes(keyword));
+    currentPage = 1;
+    displayTable(currentPage);
+});
+
+displayTable(currentPage);
+</script>
+
+</body>
+</html>
